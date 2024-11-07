@@ -1,4 +1,9 @@
 // @generated
+// @@protoc_insertion_point(attribute:amino)
+pub mod amino {
+    include!("amino.rs");
+    // @@protoc_insertion_point(amino)
+}
 pub mod cosmos {
     pub mod authz {
         // @@protoc_insertion_point(attribute:cosmos.authz.v1beta1)
@@ -58,6 +63,13 @@ pub mod cosmos {
             // @@protoc_insertion_point(cosmos.gov.v1beta1)
         }
     }
+    pub mod msg {
+        // @@protoc_insertion_point(attribute:cosmos.msg.v1)
+        pub mod v1 {
+            include!("cosmos.msg.v1.rs");
+            // @@protoc_insertion_point(cosmos.msg.v1)
+        }
+    }
     pub mod slashing {
         // @@protoc_insertion_point(attribute:cosmos.slashing.v1beta1)
         pub mod v1beta1 {
@@ -100,6 +112,11 @@ pub mod cosmwasm {
             // @@protoc_insertion_point(cosmwasm.wasm.v1)
         }
     }
+}
+// @@protoc_insertion_point(attribute:gogoproto)
+pub mod gogoproto {
+    include!("gogoproto.rs");
+    // @@protoc_insertion_point(gogoproto)
 }
 pub mod google {
     // @@protoc_insertion_point(attribute:google.api)
