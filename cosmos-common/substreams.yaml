@@ -21,9 +21,14 @@ package:
     and attribute keys only. See `derived-substreams-example.yaml` for an example 
     (https://github.com/streamingfast/substreams-foundational-modules/cosmos-common)
 
+network: mantra-mainnet
+
 protobuf:
   descriptorSets:
   - localPath: generated-buf-build.binpb
+  excludePaths:
+    - sf/substreams
+    - google
 
 binaries:
   default:
@@ -31,6 +36,23 @@ binaries:
     file: target/wasm32-unknown-unknown/release/cosmos_common.wasm
 
 modules:
+  # Error: reading manifest "/Users/bigto/Documents/dev/substreams-foundational-modules/cosmos-common/substreams.yaml": unable to get package: unable to convert manifest to package: handling use modules: module "my_transactions": use module "cosmos:filtered_trx_by_events_attribute_value" not found
+  #  - name: my_transactions
+  #    use: cosmos:filtered_trx_by_events_attribute_value
+  #    initialBlock: 70000000
+  #    blockFilter:
+  #      module: cosmos:index_events
+  #      query:
+  #        string: type:wasm && attr:_contract_address
+
+  - name: all_transactions
+    kind: map
+    initialBlock: 589869
+    inputs:
+      - source: sf.cosmos.type.v2.Block
+    output:
+      type: proto:sf.substreams.cosmos.v1:TransactionList
+
   - name: all_events
     kind: map
     initialBlock: 0
@@ -88,9 +110,10 @@ modules:
       - map: all_events
     output:
       type: proto:sf.substreams.cosmos.v1.EventList
-    
+
 params:
   filtered_events: "(type:message && attr:action) || (type:wasm && attr:_contract_address)"
   filtered_event_groups: "type:wasm && attr:_contract_address"
   filtered_events_by_attribute_value: "type:wasm && attr:_contract_address:inj1v77y5ttah96dc9qkcpc88ad7rce8n88e99t3m5"
   filtered_event_groups_by_attribute_value: "type:wasm && attr:_contract_address:inj1v77y5ttah96dc9qkcpc88ad7rce8n88e99t3m5"
+#  my_transactions: "type:wasm && attr:_contract_address:mantra14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9st5uxgc"
