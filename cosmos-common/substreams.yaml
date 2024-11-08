@@ -36,14 +36,32 @@ binaries:
     file: target/wasm32-unknown-unknown/release/cosmos_common.wasm
 
 modules:
-  # Error: reading manifest "/Users/bigto/Documents/dev/substreams-foundational-modules/cosmos-common/substreams.yaml": unable to get package: unable to convert manifest to package: handling use modules: module "my_transactions": use module "cosmos:filtered_trx_by_events_attribute_value" not found
-  #  - name: my_transactions
-  #    use: cosmos:filtered_trx_by_events_attribute_value
-  #    initialBlock: 70000000
-  #    blockFilter:
-  #      module: cosmos:index_events
-  #      query:
-  #        string: type:wasm && attr:_contract_address
+  - name: filtered_trx_by_events
+    kind: map
+    initialBlock: 589869
+    inputs:
+      - params: string
+      - map: all_transactions
+    blockFilter:
+      module: index_events
+      query:
+        params: true
+    output:
+      type: proto:sf.substreams.cosmos.v1.TransactionList
+
+  - name: filtered_trx_by_events_attribute_value
+    kind: map
+    initialBlock: 589869
+    inputs:
+      - params: string
+      - map: all_events
+      - map: all_transactions
+    blockFilter:
+      module: index_events
+      query:
+        string: type:transfer && attr:recipient
+    output:
+      type: proto:sf.substreams.cosmos.v1.TransactionList
 
   - name: all_transactions
     kind: map
@@ -51,7 +69,7 @@ modules:
     inputs:
       - source: sf.cosmos.type.v2.Block
     output:
-      type: proto:sf.substreams.cosmos.v1:TransactionList
+      type: proto:sf.substreams.cosmos.v1.TransactionList
 
   - name: all_events
     kind: map
@@ -116,4 +134,6 @@ params:
   filtered_event_groups: "type:wasm && attr:_contract_address"
   filtered_events_by_attribute_value: "type:wasm && attr:_contract_address:inj1v77y5ttah96dc9qkcpc88ad7rce8n88e99t3m5"
   filtered_event_groups_by_attribute_value: "type:wasm && attr:_contract_address:inj1v77y5ttah96dc9qkcpc88ad7rce8n88e99t3m5"
-#  my_transactions: "type:wasm && attr:_contract_address:mantra14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9st5uxgc"
+  filtered_trx_by_events: "type:transfer && attr:recipient"
+  filtered_trx_by_events_attribute_value: "type:transfer && attr:recipient:mantra13pxn9n3qw79e03844rdadagmg0nshmwf4txc8r"
+

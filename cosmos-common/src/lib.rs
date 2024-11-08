@@ -84,7 +84,7 @@ pub fn all_transactions(block: Block) -> Result<TransactionList, Error> {
                     result_gas_used: tx_result.gas_used,
                     result_events: tx_result.events.to_vec(),
                     result_codespace: tx_result.codespace.to_string(),
-                    auth_info: tx.auth_info,
+                    auth_info: None, //tx.auth_info,
                     signatures: tx.signatures,
                 };
 
