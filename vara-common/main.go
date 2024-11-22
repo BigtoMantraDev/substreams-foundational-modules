@@ -147,7 +147,7 @@ func indexExtrinsic(extrinsic *pbvara.Extrinsic) *Index {
 	for _, event := range extrinsic.Events {
 		ek := "event:" + event.Name
 		index.AddKey(k + ":" + ek)
-		//extrinsic:Gear.run:event:Success
+		// extrinsic:Gear.run:event:Success
 	}
 
 	return index
@@ -266,7 +266,7 @@ func toEvents(eventRegistry registry.EventRegistry, storageEvents []byte, metada
 func toFields(in any, metadata *types.Metadata) (*pbvara.Fields, error) {
 	var fields registry.DecodedFields
 	switch i := in.(type) {
-	case *registry.VariantWTF:
+	case *registry.Variant:
 		fields = i.Value.(registry.DecodedFields)
 	case registry.DecodedFields:
 		fields = i
@@ -290,7 +290,6 @@ func toFields(in any, metadata *types.Metadata) (*pbvara.Fields, error) {
 		}
 
 		v, err := toValue(field, metadata)
-
 		if err != nil {
 			return nil, fmt.Errorf("converting field %q: %w", field.Name, err)
 		}
@@ -358,11 +357,10 @@ func toCompositeValue(decodedField *registry.DecodedField, metadata *types.Metad
 		}
 
 		switch v := field.Value.(type) {
-		case []interface{}: //this is a Sequence
+		case []interface{}: // this is a Sequence
 			var err error
 			values[field.Name], err = toValue(field, metadata)
 			if err != nil {
-
 			}
 		case registry.DecodedFields:
 			var err error
@@ -377,7 +375,7 @@ func toCompositeValue(decodedField *registry.DecodedField, metadata *types.Metad
 					},
 				},
 			}
-		case uint8: //enum
+		case uint8: // enum
 			enumType := metadata.AsMetadataV14.EfficientLookup[field.LookupIndex]
 			for _, e := range enumType.Def.Variant.Variants {
 				if uint8(e.Index) == v {
@@ -427,8 +425,8 @@ func toCompactValue(decodedField *registry.DecodedField, metadata *types.Metadat
 
 func toVariantValue(decodedField *registry.DecodedField, metadata *types.Metadata, lookupType *types.Si1Type) (*pbvara.Value, error) {
 	switch v := decodedField.Value.(type) {
-	case *registry.VariantWTF:
-		wtf := decodedField.Value.(*registry.VariantWTF)
+	case *registry.Variant:
+		wtf := decodedField.Value.(*registry.Variant)
 		for _, variant := range lookupType.Def.Variant.Variants {
 			if byte(variant.Index) == wtf.VariantByte {
 				if len(variant.Fields) == 1 {
@@ -471,8 +469,8 @@ func toVariantValue(decodedField *registry.DecodedField, metadata *types.Metadat
 			}
 		}
 		return nil, fmt.Errorf("variant not found for: %d", wtf.VariantByte)
-	case uint8: //this is an enum
-		//todo: we should add a enum type with both name and index
+	case uint8: // this is an enum
+		// todo: we should add a enum type with both name and index
 		for _, variant := range lookupType.Def.Variant.Variants {
 			if byte(variant.Index) == decodedField.Value {
 				value := &pbvara.Value{}
@@ -541,7 +539,7 @@ func toSequenceValue(value any, metadata *types.Metadata, lookupType *types.Si1T
 					return nil, fmt.Errorf("converting composite: %w", err)
 				}
 				if len(fields.Map) == 1 {
-					for _, field := range fields.Map { //composite was just a wrapper
+					for _, field := range fields.Map { // composite was just a wrapper
 						val := &pbvara.Value{
 							Type: field.Type,
 						}

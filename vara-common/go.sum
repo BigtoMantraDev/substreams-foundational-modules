@@ -43,8 +43,8 @@ github.com/planetscale/vtprotobuf v0.6.0 h1:nBeETjudeJ5ZgBHUz1fVHvbqUKnYOXNhsIEa
 github.com/planetscale/vtprotobuf v0.6.0/go.mod h1:t/avpk3KcrXxUnYOhZhMXJlSEyie6gQbtLq5NM3loB8=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/streamingfast/go-substrate-rpc-client/v4 v4.0.0-20240802141845-c547d19d232f h1:HH16QORjdl8riTQilHZR7jlRKWo9B2y6xtTG4FT2Amg=
-github.com/streamingfast/go-substrate-rpc-client/v4 v4.0.0-20240802141845-c547d19d232f/go.mod h1:zFQ78PTKtg+cjMRxZn0c1N4QVd8kMuofeRCGZVlZWa0=
+github.com/streamingfast/go-substrate-rpc-client/v4 v4.0.0-20241122193424-3ffcc1bb3f67 h1:vT2DIEnKtFm+s+98PyZEfJJsbzIqeV5ggpKXhLBl9BQ=
+github.com/streamingfast/go-substrate-rpc-client/v4 v4.0.0-20241122193424-3ffcc1bb3f67/go.mod h1:zFQ78PTKtg+cjMRxZn0c1N4QVd8kMuofeRCGZVlZWa0=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=

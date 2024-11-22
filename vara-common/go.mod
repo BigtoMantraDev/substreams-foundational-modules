@@ -2,7 +2,7 @@ module github.com/streamingfast/substreams-foundational-modules/vara-common
 
 go 1.22.0
 
-replace github.com/centrifuge/go-substrate-rpc-client/v4 => github.com/streamingfast/go-substrate-rpc-client/v4 v4.0.0-20240802141845-c547d19d232f
+replace github.com/centrifuge/go-substrate-rpc-client/v4 => github.com/streamingfast/go-substrate-rpc-client/v4 v4.0.0-20241122193424-3ffcc1bb3f67
 
 require (
 	github.com/RoaringBitmap/roaring v1.9.1
