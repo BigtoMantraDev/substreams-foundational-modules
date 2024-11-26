@@ -1,17 +1,16 @@
 specVersion: v0.1.0
 package:
   name: solana_accounts_foundational
-  version: v0.0.4
+  version: v0.1.0
   url: https://github.com/streamingfast/substreams-foundational-modules
   image: solana.png
   description: Foundational (common) module for fetching solana account changes
 
 binaries:
   default:
-    type: wasip1/tinygo-v1
-    file: ./main.wasm
+    type: wasm/rust-v1
+    file: ./target/wasm32-unknown-unknown/release/substreams.wasm
 
-# note: this is a different endpoint than solana-mainnet, with a different block type
 network: solana-accounts-mainnet
 
 protobuf:
@@ -24,7 +23,8 @@ protobuf:
     - module: buf.build/streamingfast/substreams
   excludePaths:
     - google
-    - sf/substreams/firehose
+    - sf/substreams/
+    - sf/firehose/
 
 modules:
   - name: index_accounts

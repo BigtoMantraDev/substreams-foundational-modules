@@ -1,13 +1,11 @@
 version: v1
-managed:
-  enabled: true
-  go_package_prefix:
-    default: github.com/streamingfast/substreams-foundational-modules/solana-accounts-common/pb
-
 plugins:
-  - plugin: buf.build/protocolbuffers/go:v1.31.0
-    out: ./pb
-    opt: paths=source_relative
-  - plugin: buf.build/community/planetscale-vtprotobuf:v0.6.0
-    out: ./pb
-    opt: paths=source_relative
+- plugin: buf.build/community/neoeinstein-prost:v0.4.0
+  out: src/pb
+  opt:
+    - file_descriptor_set=false
+
+- plugin: buf.build/community/neoeinstein-prost-crate:v0.4.1
+  out: src/pb
+  opt:
+    - no_features
