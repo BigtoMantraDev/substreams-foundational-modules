@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	"github.com/mr-tron/base58"
+	typev1 "github.com/streamingfast/substreams-foundational-modules/solana-accounts-common/pb/proto/sf/substreams/solana/type/v1"
 	v1 "github.com/streamingfast/substreams-foundational-modules/solana-accounts-common/pb/sf/solana/type/v1"
 	indexv1 "github.com/streamingfast/substreams-foundational-modules/solana-accounts-common/pb/sf/substreams/index/v1"
-	typev1 "github.com/streamingfast/substreams-foundational-modules/solana-accounts-common/pb/sf/substreams/solana/type/v1"
 	"github.com/streamingfast/substreams-foundational-modules/solana-accounts-common/sqe"
 )
 
