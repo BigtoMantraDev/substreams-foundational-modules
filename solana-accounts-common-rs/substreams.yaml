@@ -1,6 +1,6 @@
 specVersion: v0.1.0
 package:
-  name: solana_accounts_foundational_rs
+  name: solana_accounts_foundational
   version: v0.1.0
   url: https://github.com/streamingfast/substreams-foundational-modules
   image: solana.png
